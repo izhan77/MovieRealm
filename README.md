@@ -22,3 +22,7 @@ Key Features:
 ✅ Sorting Functionality – Sort movies by popularity, latest, or rating
 
 ✅ Reusable Components – Optimized code with modular design
+
+
+
+![Image](https://github.com/user-attachments/assets/11dae83f-4839-4119-bc8b-049188c7011b)
