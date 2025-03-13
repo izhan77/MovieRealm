@@ -1,12 +1,28 @@
-# React + Vite
+Movie Realm is a web app that allows users to explore, filter, and sort movies based on ratings, release dates, and popularity. The app fetches real-time movie data using an external API and presents it in an interactive, user-friendly interface.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+Tech Stack Used:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React.js – Component-based UI development
 
-## Expanding the ESLint configuration
+- Fetch API & Async/Await – Handling real-time movie data
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React Hooks – State management (useState, useEffect)
+
+- CSS/Tailwind – Styling and responsiveness
+
+
+
+Key Features:
+
+✅ Movie Fetching – Uses an external API to display movies dynamically
+
+✅ Filtering System – Allows users to filter movies based on ratings (e.g., 8+ stars)
+
+✅ Sorting Functionality – Sort movies by popularity, latest, or rating
+
+✅ Reusable Components – Optimized code with modular design
+
+
+
+![Image](https://github.com/user-attachments/assets/11dae83f-4839-4119-bc8b-049188c7011b)
