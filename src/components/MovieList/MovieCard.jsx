@@ -1,10 +1,12 @@
 import { Star } from "lucide-react";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const MovieCard = ({ movie }) => {
   return (
-    <a
-      href={`https://www.themoviedb.org/movie/${movie.id}`} target="_blank"
+    <Link
+      to={`https://www.themoviedb.org/movie/${movie.id}`}
+      target="_blank"
       className="group movie_card w-[200px] h-[300px] m-[15px] overflow-hidden rounded-lg text-white shadow-[0px_3px_8px_rgba(0,0,0,0.25)] relative hover:scale-[1.08] transition-transform duration-300"
     >
       <img
@@ -28,7 +30,7 @@ const MovieCard = ({ movie }) => {
           {movie.overview.slice(0, 100) + "..."}
         </p>
       </div>
-    </a>
+    </Link>
   );
 };
 

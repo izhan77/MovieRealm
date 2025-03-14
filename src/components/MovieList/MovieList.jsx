@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import _ from "lodash";
-import { PartyPopper, Menu } from "lucide-react";
+import { Menu } from "lucide-react";
 
 import Sidebar from "../Sidebar/Sidebar";
 import MovieCard from "./MovieCard";
@@ -15,9 +15,10 @@ const MovieList = ({type,title,emoji}) => {
     by: "default",
     order: "asc",
   });
+
   useEffect(() => {
     fetchMovies();
-  }, []);
+  }, [type]);
 
   useEffect(() => {
     if (sort.by !== "default"){
