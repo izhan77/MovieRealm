@@ -6,7 +6,7 @@ import Sidebar from "../Sidebar/Sidebar";
 import MovieCard from "./MovieCard";
 import FilterGroup from "./FilterGroup";
 
-const MovieList = ({type,title,emoji}) => {
+const MovieList = ({ type, title, emoji }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [movies, setmovies] = useState([]);
   const [filtermovies, setfiltermovies] = useState([]);
@@ -21,19 +21,30 @@ const MovieList = ({type,title,emoji}) => {
   }, [type]);
 
   useEffect(() => {
-    if (sort.by !== "default"){
-        const sortedMovies = _.orderBy(filtermovies, [sort.by], [sort.order]);
-        setfiltermovies(sortedMovies);
+    if (sort.by !== "default") {
+      const sortedMovies = _.orderBy(filtermovies, [sort.by], [sort.order]);
+      setfiltermovies(sortedMovies);
     }
-  }, [sort])
+  }, [sort]);
 
   const fetchMovies = async () => {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/movie/${type}?api_key=4707683942d620e0880a6236918f9175#`
-    );
-    const data = await response.json();
-    setmovies(data.results);
-    setfiltermovies(data.results);
+    try {
+      const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
+
+      const response = await fetch(
+        `https://api.themoviedb.org/3/movie/${type}?api_key=${API_KEY}`
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch movies");
+      }
+
+      const data = await response.json();
+      setmovies(data.results);
+      setfiltermovies(data.results);
+    } catch (error) {
+      console.error("Error fetching movies:", error.message);
+    }
   };
 
   const handlefilter = (rate) => {
@@ -54,7 +65,10 @@ const MovieList = ({type,title,emoji}) => {
 
   return (
     <>
-      <section className="hidden md:px-10 md:flex md:flex-col md:items-center md:justify-between" id={type}>
+      <section
+        className="hidden md:px-10 md:flex md:flex-col md:items-center md:justify-between"
+        id={type}
+      >
         <header className="flex items-center gap-8 p-5 w-full text-[#8082EF] font-semibold">
           <div className="flex items-center gap-3">
             <span className="text-xl">{title}</span>
