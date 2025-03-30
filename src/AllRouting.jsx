@@ -1,12 +1,13 @@
 import React from "react";
 
 import { PartyPopper, ArrowBigUp, Star } from "lucide-react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import MovieList from "./components/MovieList/MovieList";
 
 const AllRouting = () => {
   return (
     <Routes>
+      <Route path="/" element={<Navigate to="/popular" />} />
       <Route
         path="/popular"
         element={
