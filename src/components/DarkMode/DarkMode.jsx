@@ -6,16 +6,21 @@ const DarkMode = () => {
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
-    document.documentElement.classList.toggle("dark");
+    //document.documentElement.classList.toggle("dark");
   };
 
   return (
-    <div className="flex items-center justify-center">
-      <input type="checkbox" id="darkmode-toggle"/>
-      <label>
-        
-      </label>
-    </div>
+    <button
+      onClick={toggleDarkMode}
+      className="p-2 bg-gray-600 rounded-full focus:outline-none"
+      aria-label="Toggle dark mode"
+    >
+      {darkMode ? (
+        <Moon className="h-6 w-6 fill-white text-white" />
+      ) : (
+        <Sun className="h-6 w-6 fill-yellow-500 text-yellow-500" />
+      )}
+    </button>
   );
 };
 

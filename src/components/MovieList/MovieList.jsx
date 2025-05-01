@@ -64,74 +64,75 @@ const MovieList = ({ type, title, emoji }) => {
   };
 
   return (
-    <>
-      <section
-        className="hidden md:px-10 md:flex md:flex-col md:items-center md:justify-between"
-        id={type}
-      >
-        <header className="flex items-center gap-8 p-5 w-full text-[#8082EF] font-semibold">
-          <div className="flex items-center gap-3">
-            <span className="text-xl">{title}</span>
-            {emoji}
-          </div>
-
-          <div className="flex items-center gap-x-8 flex-1 justify-end">
-            <FilterGroup
-              minrate={minrate}
-              onRatingClick={handlefilter}
-              ratings={[8, 7, 6]}
-            />
-
-            <div className="flex items-center gap-x-5">
-              <select
-                className="bg-transparent text-xl cursor-pointer border-b-2 border-b-transparent transition-colors duration-300"
-                name="by"
-                id=""
-                onChange={handleSort}
-                value={sort.by}
-              >
-                <option className="text-black" value="default">
-                  SortBy
-                </option>
-                <option className="text-black" value="release_date">
-                  Date
-                </option>
-                <option className="text-black" value="vote_average">
-                  Rating
-                </option>
-              </select>
-
-              <select
-                className="bg-transparent text-xl cursor-pointer border-b-2 border-b-transparent  transition-colors duration-300"
-                name="order"
-                id=""
-                onChange={handleSort}
-                value={sort.order}
-              >
-                <option className="text-black" value="asc">
-                  Ascending
-                </option>
-                <option className="text-black" value="desc">
-                  Descending
-                </option>
-              </select>
-            </div>
-          </div>
-        </header>
-      </section>
-
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6 p-2 sm:p-4 movie_cards justify-center">
-        {filtermovies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
+    <div className="relative">
+      {/* Mobile Header */}
+      <div className="md:hidden flex items-center justify-between p-4 sticky top-0 z-10 bg-white dark:bg-gray-900 shadow-sm">
+        <div className="flex items-center gap-2 text-[#8082EF] font-semibold">
+          <span className="text-lg">{title}</span>
+          {React.cloneElement(emoji, { className: "w-5 h-5" })}
+        </div>
+        <button
+          onClick={() => setSidebarOpen(true)}
+          className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
+        >
+          <Menu className="w-6 h-6" />
+        </button>
       </div>
 
-      <button
-        className="md:hidden absolute left-[1.15rem] sm:left-[2.15rem] top-[1.25rem]"
-        onClick={() => setSidebarOpen(!sidebarOpen)}
-      >
-        <Menu className="w-10 h-10" />
-      </button>
+      {/* Desktop Header */}
+      <header className="hidden md:flex items-center justify-between px-4 md:px-6 lg:px-8 xl:px-10 py-3 sticky top-0 z-10 bg-white dark:bg-gray-900 shadow-sm">
+        <div className="flex items-center gap-3 text-[#8082EF] font-semibold">
+          <span className="text-lg md:text-xl">{title}</span>
+          {React.cloneElement(emoji, { className: "w-5 h-5 md:w-6 md:h-6" })}
+        </div>
+
+        <div className="flex items-center gap-4 md:gap-6">
+          <FilterGroup
+            minrate={minrate}
+            onRatingClick={handlefilter}
+            ratings={[8, 7, 6]}
+          />
+
+          <div className="flex items-center gap-3 md:gap-4">
+            <select
+              className="bg-transparent text-sm md:text-base cursor-pointer border-b-2 border-transparent hover:border-[#8082EF] focus:border-[#8082EF] transition-colors duration-200 p-1"
+              name="by"
+              onChange={handleSort}
+              value={sort.by}
+            >
+              <option value="default">Sort By</option>
+              <option value="release_date">Date</option>
+              <option value="vote_average">Rating</option>
+            </select>
+
+            <select
+              className="bg-transparent text-sm md:text-base cursor-pointer border-b-2 border-transparent hover:border-[#8082EF] focus:border-[#8082EF] transition-colors duration-200 p-1"
+              name="order"
+              onChange={handleSort}
+              value={sort.order}
+            >
+              <option value="asc">Ascending</option>
+              <option value="desc">Descending</option>
+            </select>
+          </div>
+        </div>
+      </header>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-3 xs:gap-4 sm:gap-5 p-3 xs:p-4 sm:p-5 justify-items-center">
+        {filtermovies.length > 0 ? (
+          filtermovies.map((movie) => (
+            <MovieCard
+              key={movie.id}
+              movie={movie}
+              className="w-full max-w-[180px]"
+            />
+          ))
+        ) : (
+          <div className="col-span-full text-center py-10 text-gray-500 dark:text-gray-400">
+            No movies found matching your criteria
+          </div>
+        )}
+      </div>
 
       <Sidebar
         isOpen={sidebarOpen}
@@ -139,7 +140,7 @@ const MovieList = ({ type, title, emoji }) => {
         minrate={minrate}
         handlefilter={handlefilter}
       />
-    </>
+    </div>
   );
 };
 
