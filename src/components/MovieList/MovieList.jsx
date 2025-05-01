@@ -75,7 +75,7 @@ const MovieList = ({ type, title, emoji }) => {
           onClick={() => setSidebarOpen(true)}
           className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
         >
-          <Menu className="w-6 h-6" />
+          <Menu className="w-6 h-6 text-white" />
         </button>
       </div>
 
@@ -83,7 +83,7 @@ const MovieList = ({ type, title, emoji }) => {
       <header className="hidden md:flex items-center justify-between px-4 md:px-6 lg:px-8 xl:px-10 py-3 sticky top-0 z-10 bg-white dark:bg-gray-900 shadow-sm">
         <div className="flex items-center gap-3 text-[#8082EF] font-semibold">
           <span className="text-lg md:text-xl">{title}</span>
-          {React.cloneElement(emoji, { className: "w-5 h-5 md:w-6 md:h-6" })}
+          {React.cloneElement(emoji, { className: " w-5 h-5 md:w-6 md:h-6" })}
         </div>
 
         <div className="flex items-center gap-4 md:gap-6">
@@ -95,7 +95,7 @@ const MovieList = ({ type, title, emoji }) => {
 
           <div className="flex items-center gap-3 md:gap-4">
             <select
-              className="bg-transparent text-sm md:text-base cursor-pointer border-b-2 border-transparent hover:border-[#8082EF] focus:border-[#8082EF] transition-colors duration-200 p-1"
+              className="bg-transparent text-sm md:text-base cursor-pointer border-b-2 text-[#8082EF] border-transparent hover:border-[#8082EF] focus:border-[#8082EF] transition-colors duration-200 p-1"
               name="by"
               onChange={handleSort}
               value={sort.by}
@@ -106,7 +106,7 @@ const MovieList = ({ type, title, emoji }) => {
             </select>
 
             <select
-              className="bg-transparent text-sm md:text-base cursor-pointer border-b-2 border-transparent hover:border-[#8082EF] focus:border-[#8082EF] transition-colors duration-200 p-1"
+              className="bg-transparent text-sm md:text-base cursor-pointer border-b-2 text-[#8082EF] border-transparent hover:border-[#8082EF] focus:border-[#8082EF] transition-colors duration-200 p-1"
               name="order"
               onChange={handleSort}
               value={sort.order}

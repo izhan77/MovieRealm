@@ -23,9 +23,9 @@ const Sidebar = ({ isOpen, toggleSidebar, minrate, handlefilter }) => {
           <FilterGroup minrate={minrate} onRatingClick={handlefilter} ratings={[8, 7, 6]} className="text-white" />
 
           <select className="bg-transparent text-lg cursor-pointer border-b-2 border-b-transparent hover:border-b-purple-300 transition-colors duration-300">
-            <option className="text-black" value="">Sort By</option>
-            <option className="text-black" value="date">Date</option>
-            <option className="text-black" value="rating">Rating</option>
+            <option className="text-white" value="">Sort By</option>
+            <option className="text-white" value="date">Date</option>
+            <option className="text-white" value="rating">Rating</option>
           </select>
 
           <select className="bg-transparent text-lg cursor-pointer border-b-2 border-b-transparent hover:border-b-purple-300 transition-colors duration-300">
